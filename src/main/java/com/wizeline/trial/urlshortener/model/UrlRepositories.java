@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
 /**
@@ -18,7 +20,7 @@ public class UrlRepositories {
     private static final String AVAILABLE_CHARS = "0123456789abcdefghijklmnopqrstuvwxyz";
     private static final int FIXED_LENGTH = 5;
 
-    private HashMap<String, String> urlMappings = new HashMap<>();
+    private Map<String, String> urlMappings = new HashMap<>();
 
     /**
      * Get Full URL from the short one
@@ -44,6 +46,11 @@ public class UrlRepositories {
             throw new RuntimeException("Url is invalid.");
         }
 
+
+        Optional<Map.Entry<String, String>> entry1 = urlMappings.entrySet().stream().filter(entry -> entry.getValue().equals(fullUrl)).findFirst();
+        if (entry1.isPresent()) {
+            return entry1.get().getKey();
+        }
 
         String shorternUrl = generateString(new Random(), AVAILABLE_CHARS, FIXED_LENGTH);
         shorternUrl = url.getProtocol() + "://" + SHORTERNED_URL_PREFIX + "/" + shorternUrl;
