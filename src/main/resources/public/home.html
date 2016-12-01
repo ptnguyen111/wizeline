@@ -21,7 +21,7 @@
         <div class="row"> 
             <div class="col-lg-12 col-xs-12"> 
                 <div class="form-group"> 
-                    <label class="control-label">Please enter your full URL</label> 
+                    <label class="control-label">Please enter your URL</label> 
                     <input class="form-control" type="text" ng-model="fullURL"> 
                 </div> 
             </div> 
@@ -39,12 +39,13 @@
                 </div> 
             </div> 
 
-            <button class="btn btn-default" ng-click="generate()">GO!</button>
+            <button class="btn btn-default" ng-click="generate()">Get Short URL!</button>
+            <button class="btn btn-default" ng-click="getFull()">Get Full URL!</button>
         </div> 
 
         <div class="row">
             <div class="col-xs-12">
-                <label class="control-label">Your short URL: {{shorternURL}}</label>
+                <label class="control-label">Your URL: {{shorternURL}}</label>
             </div>
         </div>
     </div>
